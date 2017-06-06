@@ -1,15 +1,13 @@
 import Highcharts from "highcharts";
 import {get1} from "../API/data";
 
-const Fuck = () => {
+const question1 = () => {
     get1(data => {
-        console.log("received res:", data);
         const relations = data;
         const cleanedData = data.map((item, index) => [
             new Date(item[2]).getTime(),
             index + 1,
         ]);
-        console.log("cleaned", cleanedData);
         const myChart = Highcharts.chart('chart1', {
             chart: {
                 type: 'line'
@@ -32,4 +30,4 @@ const Fuck = () => {
         });
     })
 };
-export default Fuck;
+export default question1;
