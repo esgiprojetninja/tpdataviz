@@ -6,11 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="jquery.jqplot.min.css">
 		<link rel="stylesheet" type="text/css" href="dataviz.css">
 
-		<!-- Inclusion JS (librairie + scripts de création de graph) -->
-		<script type="text/javascript" src="jquery.js"></script>
-		<script type="text/javascript" src="jquery.jqplot.min.js"></script>
-
-		<script type="text/javascript" src="dataviz.js"></script>
+		<script type="text/javascript" src="dist/js/index.js"></script>
 	</head>
 	<body>
 		<?php include ('header.php'); ?>
