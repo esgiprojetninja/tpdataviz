@@ -1,11 +1,12 @@
 var relations;
 import $ from "jquery";
-import * as jqplots from "updated-jqplot";
+import Highcharts from "highcharts";
 
 window.addEventListener("load", function load(event){
     window.removeEventListener("load", load, false);
+
   	// Pas de cache sur les requête IMPORTANT !
-    console.log(jqplots);
+    console.log(Highcharts);
   	$.ajaxSetup({ cache: false });
 
   	/***
@@ -23,21 +24,21 @@ window.addEventListener("load", function load(event){
   		QUESTION 1 : PIE CHART : Visite par marque
   	****************************************/
   	getRequest("liste_amis_user.php?user=5", function(data) {
-          relations = data;
-          cleanedData = data.map((item, index) => [
-              item[2],
-              index + 1
-          ]);
-          var plot1 = $.jqplot("chart1", [cleanedData], {
-              title: "Nombre d'amis au fil du mois",
-              axes: {
-                  xaxis: {
-                      renderer: $.jqplot.DateAxisRenderer
-                  }
-              },
-              series:[{lineWidth:4, markerOptions:{style:'square'}}]
-          })
-    		console.log(data);
-        console.log(cleanedData);
+        //   relations = data;
+        //   cleanedData = data.map((item, index) => [
+        //       item[2],
+        //       index + 1
+        //   ]);
+        //   var plot1 = $.jqplot("chart1", [cleanedData], {
+        //       title: "Nombre d'amis au fil du mois",
+        //       axes: {
+        //           xaxis: {
+        //               renderer: $.jqplot.DateAxisRenderer
+        //           }
+        //       },
+        //       series:[{lineWidth:4, markerOptions:{style:'square'}}]
+        //   })
+    		// console.log(data);
+        // console.log(cleanedData);
   	});
 }, false);
