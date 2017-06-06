@@ -1,6 +1,5 @@
 import $ from "jquery";
 import Highcharts from "highcharts";
-var notations;
 
 $(function(){
   	// Pas de cache sur les requête IMPORTANT !
@@ -21,8 +20,6 @@ $(function(){
   		QUESTION 1 : PIE CHART : Visite par marque
   	****************************************/
   	getRequest("average_note.php?user=22", function(data) {
-        notations = data;
-        console.log(data);
         Highcharts.chart("chart2", {
             title: "Evolution de la notation",
             yAxis: {
@@ -34,4 +31,20 @@ $(function(){
             }]
         });
   	});
+
+    /***************************************
+  		QUESTION 3
+  	****************************************/
+ //  	getRequest("average_note.php?user=22", function(data) {
+    //     Highcharts.chart("chart3", {
+    //         title: "Evolution de la notation",
+    //         yAxis: {
+    //             title: "Note"
+    //         },
+    //         series: [{
+    //             name: "User 56",
+    //             data: data.map((d) => Number(d[1]))
+    //         }]
+    //     });
+ //  	});
 });
