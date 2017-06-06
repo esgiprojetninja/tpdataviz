@@ -1,12 +1,8 @@
-var relations;
 import $ from "jquery";
 import Highcharts from "highcharts";
 
-window.addEventListener("load", function load(event){
-    window.removeEventListener("load", load, false);
-
+$(function(){
   	// Pas de cache sur les requête IMPORTANT !
-    console.log(Highcharts);
   	$.ajaxSetup({ cache: false });
 
   	/***
@@ -14,31 +10,25 @@ window.addEventListener("load", function load(event){
   		Je ne définis que le GET ici, mais il est possible d'utiliser POST pour récupérer ses données (on le verra dans un prochain TP)
   	****/
   	function getRequest(url, callback) {
-    		$.get(url, function(data) {
-    			data = $.parseJSON(data);
-    			callback(data);
-    		});
+		$.get(url, function(data) {
+			data = $.parseJSON(data.trim());
+			callback(data);
+		});
   	}
 
   	/***************************************
   		QUESTION 1 : PIE CHART : Visite par marque
   	****************************************/
-  	getRequest("liste_amis_user.php?user=5", function(data) {
-        //   relations = data;
-        //   cleanedData = data.map((item, index) => [
-        //       item[2],
-        //       index + 1
-        //   ]);
-        //   var plot1 = $.jqplot("chart1", [cleanedData], {
-        //       title: "Nombre d'amis au fil du mois",
-        //       axes: {
-        //           xaxis: {
-        //               renderer: $.jqplot.DateAxisRenderer
-        //           }
-        //       },
-        //       series:[{lineWidth:4, markerOptions:{style:'square'}}]
-        //   })
-    		// console.log(data);
-        // console.log(cleanedData);
+  	getRequest("notations_user.php?user=56", function(data) {
+        Highcharts.chart("chart2", {
+            title: "Evolution de la notation",
+            yAxis: {
+                title: "Note"
+            },
+            series: [{
+                name: "User 56",
+                data: data.map((d) => Number(d[2]))
+            }]
+        });
   	});
-}, false);
+});
