@@ -1,5 +1,6 @@
 import $ from "jquery";
 import Highcharts from "highcharts";
+var notations;
 
 $(function(){
   	// Pas de cache sur les requête IMPORTANT !
@@ -19,7 +20,9 @@ $(function(){
   	/***************************************
   		QUESTION 1 : PIE CHART : Visite par marque
   	****************************************/
-  	getRequest("notations_user.php?user=56", function(data) {
+  	getRequest("average_note.php?user=22", function(data) {
+        notations = data;
+        console.log(data);
         Highcharts.chart("chart2", {
             title: "Evolution de la notation",
             yAxis: {
@@ -27,7 +30,7 @@ $(function(){
             },
             series: [{
                 name: "User 56",
-                data: data.map((d) => Number(d[2]))
+                data: data.map((d) => Number(d[1]))
             }]
         });
   	});
