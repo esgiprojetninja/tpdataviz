@@ -23,15 +23,38 @@ $(document).ready(function(){
             item[2],
             index + 1
         ]);
-        var plot1 = $.jqplot("chart1", [cleanedData], {
-            title: "Nombre d'amis au fil du mois",
-            axes: {
-                xaxis: {
-                    renderer: $.jqplot.DateAxisRenderer
-                }
-            },
-            series:[{lineWidth:4, markerOptions:{style:'square'}}]
-        })
+        // var plot1 = $.jqplot("chart1", [cleanedData], {
+        //     title: "Nombre d'amis au fil du mois",
+        //     axes: {
+        //         xaxis: {
+        //             renderer: $.jqplot.DateAxisRenderer,
+        //
+        //         },
+        //         yaxis: {
+        //             tickOptions: {
+        //                 formatString: '%.0f'
+        //             },
+        //             min: 0
+        //         }
+        //     },
+        //     series:[{lineWidth:4, markerOptions:{style:'square'}}]
+        // });
+        var line1=[['2008-06-30 8:00AM',4], ['2008-7-14 8:00AM',6.5], ['2008-7-28 8:00AM',5.7], ['2008-8-11 8:00AM',9], ['2008-8-25 8:00AM',8.2]];
+  var plot2 = $.jqplot('chart1', [line1], {
+      title:'Customized Date Axis',
+      axes:{
+        xaxis:{
+          renderer:$.jqplot.DateAxisRenderer,
+          tickOptions:{formatString:'%b %#d, %#I %p'},
+          min:'June 16, 2008 8:00AM',
+          // tickInterval:'2 weeks'
+        },
+        yaxis: {
+            min: 0
+        }
+      },
+      series:[{lineWidth:4, markerOptions:{style:'square'}}]
+  });
 		console.log(data);
         console.log(cleanedData);
 	});
