@@ -1,6 +1,25 @@
 <?php
 	// Le tableau de résultat
-	$result_request = array();
+	$result_request = [
+			[
+					"nom" => "18-21ans",
+					"hommes" => [],
+					"femmes" => [],
+					"total" => 0
+			],
+			[
+					"nom" => "22-25ans",
+					"hommes" => [],
+					"femmes" => [],
+					"total" => 0
+			],
+			[
+					"nom" => "26-29ans",
+					"hommes" => [],
+					"femmes" => [],
+					"total" => 0
+			]
+	];
 
 	/*
 		On teste si le paramètre GET existe
@@ -14,7 +33,7 @@
 
 		$user_input = (int) $_GET['user'];
 
-		$query = "SELECT DISTINCT r.user2 as id_u2, sexe, age
+		$query = "SELECT DISTINCT r.user2 as id_user, pseudo, sexe, age
     	FROM relations r
       INNER JOIN utilisateurs u
       ON r.user2 = u.id
@@ -26,26 +45,32 @@
 		$result = mysqli_query($conn, $query);
 
 		while ($row = mysqli_fetch_array($result)) {
-			$result_request[] = array(intval($row[0]), intval($row[1]), $row[2]);
+				$age = (int) $row["age"];
+				$sexe = (int) $row["sexe"];
+				$num_tranche = 2;
+				$genre_a_incrementer = "femmes";
+				if ( $age <= 21 )
+						$num_tranche = 0;
+				else if ( $age <= 25 )
+						$num_tranche = 1;
+				if ( $sexe === 1 )
+						$genre_a_incrementer = "hommes";
+				$result_request[$num_tranche]["total"] += 1;
+				$result_request[$num_tranche][$genre_a_incrementer][] = [
+						"age" => $age,
+						"pseudo" => $row["pseudo"]
+				];
 		}
 
 		mysqli_free_result($result);
 
 		// Déconnexion de la BDD
 		include("./deconnexion_bdd.php");
+
+
 	}
 
 	// Renvoyer le résultat au javascript
 	echo json_encode($result_request);
-/*
-SELECT DISTINCT r.user2 as id_u2, sexe, age
-	FROM relations r
-  INNER JOIN utilisateurs u
-  ON r.user2 = u.id
-  WHERE user1 = 5;
 
-
-  0 = F
-  1 = M
-*/
 ?>
