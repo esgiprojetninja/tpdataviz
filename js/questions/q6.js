@@ -61,7 +61,6 @@ const config = {
 ****************************************/
 const question6 = () => {
     get6( data => {
-        console.log("mother fucker i'm ill", data);
         config.xAxis.categories = Array.from(data).map( obj => obj.nom );
         config.series = [
             {

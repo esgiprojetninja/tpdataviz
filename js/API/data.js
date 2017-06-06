@@ -40,7 +40,7 @@ export const get3 = callback => {
 export const get6 = callback => {
     return $.ajax({
         method: "GET",
-        url: "liste_amis_par_tranche_age.php?user=5"
+        url: baseUrl+"liste_amis_par_tranche_age.php?user=5"
     }).done(data => {
         callback($.parseJSON(data.trim()))
     }).fail(failed);
@@ -49,7 +49,7 @@ export const get6 = callback => {
 export const get7 = callback => {
     return $.ajax({
         method: "GET",
-        url: ""
+        url: baseUrl+"popularite_par_tranche_age_sexe.php?user=57"
     }).done(data => {
         callback($.parseJSON(data.trim()))
     }).fail(failed);
