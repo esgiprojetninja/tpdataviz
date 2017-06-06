@@ -1,5 +1,8 @@
 var relations;
-$(document).ready(function(){
+import $ from "jquery";
+
+window.addEventListener("load", function load(event){
+    window.removeEventListener("load", load, false);
 	// Pas de cache sur les requête IMPORTANT !
 	$.ajaxSetup({ cache: false });
 
@@ -58,4 +61,4 @@ $(document).ready(function(){
 		console.log(data);
         console.log(cleanedData);
 	});
-});
+}, false);
