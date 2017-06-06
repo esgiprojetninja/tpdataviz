@@ -36,3 +36,21 @@ export const get3 = callback => {
     //     callback($.parseJSON(data.trim()));
     // }).fail(failed)
 };
+
+export const get6 = callback => {
+    return $.ajax({
+        method: "GET",
+        url: "liste_amis_user.php?user=5"
+    }).done(data => {
+        callback($.parseJSON(data.trim()))
+    }).fail(failed);
+};
+
+export const get7 = callback => {
+    return $.ajax({
+        method: "GET",
+        url: ""
+    }).done(data => {
+        callback($.parseJSON(data.trim()))
+    }).fail(failed);
+};
