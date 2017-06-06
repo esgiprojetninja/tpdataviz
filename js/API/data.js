@@ -54,3 +54,12 @@ export const get7 = callback => {
         callback($.parseJSON(data.trim()))
     }).fail(failed);
 };
+
+export const getBonus = callback => {
+    return $.ajax({
+        method: "GET",
+        url: baseUrl+"amis_plus_actifs.php?user=5"
+    }).done(data => {
+        callback($.parseJSON(data.trim()))
+    }).fail(failed);
+};

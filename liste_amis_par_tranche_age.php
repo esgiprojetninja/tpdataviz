@@ -33,13 +33,13 @@
 
 		$user_input = (int) $_GET['user'];
 
-		$query = "SELECT DISTINCT r.user2 as id_user, pseudo, sexe, age
+		$query = "SELECT r.user2 as id_user, pseudo, sexe, age
     	FROM relations r
       INNER JOIN utilisateurs u
       ON r.user2 = u.id
     ";
 		if($user_input != 0) {
-			$query = $query." WHERE user1 = ".$user_input.";";
+			$query = $query." WHERE user1 = ".$user_input." GROUP BY user2;";
 		}
 
 		$result = mysqli_query($conn, $query);
