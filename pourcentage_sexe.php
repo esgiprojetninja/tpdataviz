@@ -14,13 +14,17 @@
 
 		$user = $_GET['user'];
 
-    $query = "select * from messages as m left join relations as r on (r.user1=3 and m.destinataire=r.user2) where emetteur=3;";
+    $query = "SELECT u.sexe
+              FROM relations as r
+              JOIN utilisateurs as u
+              ON (r.user2=u.id)
+              WHERE r.user1=".$user.";";
 
 
 		$result = mysqli_query($conn, $query);
 
 		while ($row = mysqli_fetch_array($result)) {
-			$result_request[] = array(intval($row[0]), intval($row[1]), intval($row[2]));
+			$result_request[] = array(intval($row[0]));
 		}
 
 		mysqli_free_result($result);
