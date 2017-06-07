@@ -21,6 +21,19 @@
 			return ( $row = mysqli_fetch_array($res) ) ? (int) $row["nb_status"] : 0;
 	}
 
+	function getPhotoPath($photo_id) {
+			$prefix = 'avatar';
+			if ( file_exists('img/'.$prefix.$photo_id.'.png') )
+					return 'img/'.$prefix.$photo_id.'.png';
+			if ( file_exists('img/'.$prefix.$photo_id.'.jpg') )
+					return 'img/'.$prefix.$photo_id.'.jpg';
+			if ( file_exists('img/'.$prefix.$photo_id.'.jpeg') )
+					return 'img/'.$prefix.$photo_id.'.jpeg';
+			if ( file_exists('img/'.$prefix.$photo_id.'.gif') )
+					return 'img/'.$prefix.$photo_id.'.gif';
+			return 'img/default-avatar.png';
+	}
+
 
 	if(isset($_GET['user'])) {
 		// Connexion à la BDD
@@ -28,34 +41,44 @@
 
 		$user_input = (int) $_GET['user'];
 
-		$query = "SELECT user2 as id, pseudo, sexe, age, photo
-    	FROM relations r
-      INNER JOIN utilisateurs u
-      ON r.user2 = u.id
-    ";
-		if($user_input != 0) {
-			$query = $query." WHERE user1 = ".$user_input." GROUP BY user2;";
+		if ( isset($_POST['csvData']) ) {
+				$file_name = 'data.'.$user_input.'.csv';
+				$fp = fopen($file_name, 'w');
+				fwrite($fp, $_POST['csvData']);
+				fclose($fp);
+				$response["file_path"] = $file_name;
+		} else {
+
+
+
+				$query = "SELECT user2 as id, pseudo, sexe, age, photo
+		    	FROM relations r
+		      INNER JOIN utilisateurs u
+		      ON r.user2 = u.id
+		    ";
+				if($user_input != 0) {
+					$query = $query." WHERE user1 = ".$user_input." GROUP BY user2;";
+				}
+
+				$result = mysqli_query($conn, $query);
+
+				while ($row = mysqli_fetch_array($result)) {
+						$result_request[] = $row;
+				}
+
+				mysqli_free_result($result);
+
+				foreach ($result_request as $row) {
+						$response[] = [
+								"pseudo" => $row["pseudo"],
+								"sexe" => $row["sexe"],
+								"age" => (int) $row["age"],
+							  // @TODO: find photo existence
+								"photo" => getPhotoPath((int) $row["photo"]),
+								"popularite" => getNbMessages($conn, (int) $row["id"]) + getNbNotations($conn, (int) $row["id"]) + getNbStatus($conn, (int) $row["id"])
+						];
+				}
 		}
-
-		$result = mysqli_query($conn, $query);
-
-		while ($row = mysqli_fetch_array($result)) {
-				$result_request[] = $row;
-		}
-
-		mysqli_free_result($result);
-
-		foreach ($result_request as $row) {
-				$response[] = [
-						"pseudo" => $row["pseudo"],
-						"sexe" => $row["sexe"],
-						"age" => (int) $row["age"],
-					  // @TODO: find photo existence
-						"photo" => $row["photo"],
-						"popularite" => getNbMessages($conn, (int) $row["id"]) + getNbNotations($conn, (int) $row["id"]) + getNbStatus($conn, (int) $row["id"])
-				];
-		}
-
 		// Déconnexion de la BDD
 		include("./deconnexion_bdd.php");
 
