@@ -5,6 +5,7 @@ import {get4} from "../API/data";
   QUESTION 4
 ****************************************/
 const question4 = (id) => {
+    document.getElementById('chart4').innerHTML = "";
     get4(id, data => {
         let girls = 0;
         let boys = 0;

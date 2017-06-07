@@ -5,6 +5,7 @@ import {get3} from "../API/data";
   QUESTION 3
 ****************************************/
 const question3 = (id) => {
+    document.getElementById('chart3').innerHTML = "";
     get3(id, data => {
         let toFriends = 0;
         let notToFriends = 0;

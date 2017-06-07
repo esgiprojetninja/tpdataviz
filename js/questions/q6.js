@@ -60,6 +60,7 @@ const config = {
    Pour chaque tranche d'age on veut la répartition par sexe
 ****************************************/
 const question6 = (id) => {
+    document.getElementById('chart6').innerHTML = "";
     get6(id, data => {
         config.xAxis.categories = Array.from(data).map( obj => obj.nom );
         config.series = [

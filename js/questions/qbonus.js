@@ -10,6 +10,7 @@ import $ from "jquery";
 ****************************************/
 const questionBonus = (id) => {
     getBonus(id, data => {
+        document.getElementById('chartBonus').innerHTML = "";
         const sortedData = data.sort( (a,b) => b.popularite-a.popularite )
         converter.json2csv(sortedData, (err, _csv) => {
             if ( err ) {

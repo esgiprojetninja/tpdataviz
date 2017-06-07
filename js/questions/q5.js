@@ -5,6 +5,7 @@ import {get5} from "../API/data";
   QUESTION 5
 ****************************************/
 const question5 = (id) => {
+    document.getElementById('chart5').innerHTML = "";
     get5(id, data => {
         const series = [{
             name: "Girls",

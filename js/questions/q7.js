@@ -72,6 +72,7 @@ const config = {
 ****************************************/
 const question7 = (id) => {
     get7(id, data => {
+        document.getElementById('chart7').innerHTML = "";
         config.series.push({
             name: "Femmes",
             color: "rgba(223, 83, 83, .5)",
