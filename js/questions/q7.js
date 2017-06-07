@@ -70,8 +70,8 @@ const config = {
       3 points, +2 point bonus si vous ajoutez un filtre pour le sexe sur votre graphique
       OU  +1 point bonus si vous mettez un code couleur pour le sexe
 ****************************************/
-const question7 = () => {
-    get7( data => {
+const question7 = (id) => {
+    get7(id, data => {
         config.series.push({
             name: "Femmes",
             color: "rgba(223, 83, 83, .5)",

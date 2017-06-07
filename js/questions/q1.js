@@ -1,8 +1,8 @@
 import Highcharts from "highcharts";
 import {get1} from "../API/data";
 
-const question1 = () => {
-    get1(data => {
+const question1 = (id) => {
+    get1(id, data => {
         const relations = data;
         const cleanedData = data.map((item, index) => [
             new Date(item[2]).getTime(),

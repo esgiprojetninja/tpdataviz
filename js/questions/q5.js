@@ -4,20 +4,8 @@ import {get5} from "../API/data";
 /***************************************
   QUESTION 5
 ****************************************/
-const question5 = () => {
-    get5( data => {
-        console.log(data);
-        // const series = [{
-        //     name: "Po",
-        //     colorByPoint: true,
-        //     data: [{
-        //         name: "Filles",
-        //         y: result(girls, data.length)
-        //     }, {
-        //         name: "Garçons",
-        //         y: result(boys, data.length)
-        //     }]
-        // }]
+const question5 = (id) => {
+    get5(id, data => {
         const series = [{
             name: "Girls",
             data: [0, 0, 0, 0, 0]

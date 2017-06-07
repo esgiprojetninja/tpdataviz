@@ -59,8 +59,8 @@ const config = {
    par sexe. (4 points).
    Pour chaque tranche d'age on veut la répartition par sexe
 ****************************************/
-const question6 = () => {
-    get6( data => {
+const question6 = (id) => {
+    get6(id, data => {
         config.xAxis.categories = Array.from(data).map( obj => obj.nom );
         config.series = [
             {

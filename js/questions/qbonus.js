@@ -8,8 +8,8 @@ import $ from "jquery";
       Classement des amis par activité
       (somme du nombre de statuts, messages et notations effectuées)
 ****************************************/
-const questionBonus = () => {
-    getBonus( data => {
+const questionBonus = (id) => {
+    getBonus(id, data => {
         const sortedData = data.sort( (a,b) => b.popularite-a.popularite )
         converter.json2csv(sortedData, (err, _csv) => {
             if ( err ) {

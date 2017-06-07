@@ -2,6 +2,19 @@
 	// Le tableau de résultat
 	$result_request = array();
 
+  function getPhotoPath($photo_id) {
+			$prefix = 'avatar';
+			if ( file_exists('img/'.$prefix.$photo_id.'.png') )
+					return 'img/'.$prefix.$photo_id.'.png';
+			if ( file_exists('img/'.$prefix.$photo_id.'.jpg') )
+					return 'img/'.$prefix.$photo_id.'.jpg';
+			if ( file_exists('img/'.$prefix.$photo_id.'.jpeg') )
+					return 'img/'.$prefix.$photo_id.'.jpeg';
+			if ( file_exists('img/'.$prefix.$photo_id.'.gif') )
+					return 'img/'.$prefix.$photo_id.'.gif';
+			return 'img/default-avatar.png';
+	}
+
 	/*
 		On teste si le paramètre GET existe
 		0 -> tous les utilisateurs
@@ -23,7 +36,7 @@
 		$result = mysqli_query($conn, $query);
 
 		while ($row = mysqli_fetch_array($result)) {
-			$result_request[] = array(intval($row[0]), $row[1], $row[2], $row[3], intval($row[4]), $row[5], intval($row[6]), intval($row[7]));
+			$result_request[] = array(intval($row[0]), $row[1], $row[2], $row[3], getPhotoPath(intval($row[4])), $row[5], intval($row[6]), intval($row[7]));
 		}
 
 		mysqli_free_result($result);

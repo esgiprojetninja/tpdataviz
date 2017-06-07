@@ -4,8 +4,8 @@ import {get4} from "../API/data";
 /***************************************
   QUESTION 4
 ****************************************/
-const question4 = () => {
-    get4( data => {
+const question4 = (id) => {
+    get4(id, data => {
         let girls = 0;
         let boys = 0;
         for (let i = 0; i < data.length; i++) {

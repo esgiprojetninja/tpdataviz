@@ -4,8 +4,8 @@ import {get3} from "../API/data";
 /***************************************
   QUESTION 3
 ****************************************/
-const question3 = () => {
-    get3( data => {
+const question3 = (id) => {
+    get3(id, data => {
         let toFriends = 0;
         let notToFriends = 0;
         for (let i = 0; i < data.length; i++) {

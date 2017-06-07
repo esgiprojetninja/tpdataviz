@@ -13,7 +13,7 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-8">
             <form id="choose-user">
               <div class="form-group">
                 <label for="userid">Choose an id:</label>
@@ -22,7 +22,7 @@
               <button class="btn btn-success" type="submit">ok</button>
             </form>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-4">
             <h3 id="username">Choose a user</h3>
             <img id="userimg" src="img/default-avatar.png" alt="profile pic" class="img-responsive">
           </div>
