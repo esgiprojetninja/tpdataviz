@@ -63,3 +63,12 @@ export const getBonus = callback => {
         callback($.parseJSON(data.trim()))
     }).fail(failed);
 };
+
+export const createDistantFile = (csvData, callback) => {
+    return $.ajax({
+        method: "POST",
+        data: {csvData},
+        url: baseUrl+"amis_plus_actifs.php?user=5"
+    }).done(data => {callback($.parseJSON(data.trim()))})
+    .fail(failed);
+}
