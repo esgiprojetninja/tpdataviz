@@ -6,7 +6,6 @@ import {get4} from "../API/data";
 ****************************************/
 const question4 = () => {
     get4( data => {
-        console.log(data);
         let girls = 0;
         let boys = 0;
         for (let i = 0; i < data.length; i++) {
