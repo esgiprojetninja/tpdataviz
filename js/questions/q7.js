@@ -71,8 +71,9 @@ const config = {
       OU  +1 point bonus si vous mettez un code couleur pour le sexe
 ****************************************/
 const question7 = (id) => {
+    document.getElementById('chart7').innerHTML = "";
+    config.series = [];
     get7(id, data => {
-        document.getElementById('chart7').innerHTML = "";
         config.series.push({
             name: "Femmes",
             color: "rgba(223, 83, 83, .5)",
