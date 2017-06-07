@@ -81,3 +81,13 @@ export const getBonus = callback => {
         callback($.parseJSON(data.trim()))
     }).fail(failed);
 };
+
+export const getInfo = (id, callback) => {
+    console.log(id);
+    return $.ajax({
+        method: "GET",
+        url: baseUrl+"infos_user.php?user="+id
+    }).done(data => {
+        callback($.parseJSON(data.trim()))
+    }).fail(failed);
+};
