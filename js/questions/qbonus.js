@@ -16,7 +16,7 @@ const questionBonus = (id) => {
                 console.error(err);
                 return;
             }
-            createDistantFile(_csv, response => {
+            createDistantFile(id, _csv, response => {
 
                 const rows = []
 

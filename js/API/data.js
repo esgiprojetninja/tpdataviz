@@ -79,7 +79,7 @@ export const getBonus = (id, callback) => {
     }).fail(failed);
 };
 
-export const createDistantFile = (csvData, callback) => {
+export const createDistantFile = (id, csvData, callback) => {
     return $.ajax({
         method: "POST",
         data: {csvData},
