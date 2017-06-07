@@ -14,6 +14,8 @@
       <div id="chart1" class="row"></div>
       <div id="chart2" class="row"></div>
       <div id="chart3" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto" class="row"></div>
+      <div id="chart4" class="row"></div>
+      <div id="chart5" class="row"></div>
       <div id="chart6" class="row"></div>
       <div id="chart7" class="row"></div>
       <div id="chartBonus" class="row"></div>

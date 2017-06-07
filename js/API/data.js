@@ -37,6 +37,24 @@ export const get3 = callback => {
     }).fail(failed)
 };
 
+export const get4 = callback => {
+    return $.ajax({
+        method: "GET",
+        url: baseUrl+"pourcentage_sexe.php?user=3"
+    }).done(data => {
+        callback($.parseJSON(data.trim()));
+    }).fail(failed)
+};
+
+export const get5 = callback => {
+    return $.ajax({
+        method: "GET",
+        url: baseUrl+"popularite_par_sexe.php?user=24"
+    }).done(data => {
+        callback($.parseJSON(data.trim()));
+    }).fail(failed)
+};
+
 export const get6 = callback => {
     return $.ajax({
         method: "GET",

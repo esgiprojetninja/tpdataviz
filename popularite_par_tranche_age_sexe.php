@@ -17,7 +17,7 @@
 
 		$user_input = (int) $_GET['user'];
 
-		$query = "SELECT pseudo, sexe, age, note
+		$query = "SELECT DISTINCT pseudo, sexe, age, note
     	FROM relations r
       INNER JOIN utilisateurs u
       ON r.user2 = u.id
@@ -25,7 +25,7 @@
       ON n.noteur = r.user2
     ";
 		if($user_input != 0)
-			$query .= " AND n.photo = ".$user_input." WHERE user1 = ".$user_input." GROUP BY user2 ORDER BY age ASC;";
+			$query .= " AND n.photo = ".$user_input." WHERE user1 = ".$user_input." ORDER BY age ASC;";
 		$result = mysqli_query($conn, $query);
 
 		while ($row = mysqli_fetch_array($result)) {
