@@ -39,7 +39,10 @@ const questionBonus = () => {
 
                         rows.push(row);
                     });
-
+                    const table_title = document.createElement("h2");
+                    table_title.innerHTML = "Classement des amis par activité";
+                    table_title.className = "text text-success text-center";
+                    $("#chartBonus")[0].appendChild(table_title);
                     const table = d3.select("#chartBonus").append("table");
                     table._groups[0][0].className = "table table-striped table-responsive table-hover";
                     const thead = table.append("thead");
