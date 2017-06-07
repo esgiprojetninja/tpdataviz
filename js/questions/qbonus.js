@@ -67,25 +67,6 @@ const questionBonus = () => {
                         .enter().append("td")
                           .text(function(d) { return d; });
 
-                    const width = 80;
-                    const height = table._groups[0][0].clientHeight;
-                    const mx = 10;
-                    const radius = 2;
-
-
-
-
-                    // Now add the chart column
-                    d3.select("#chartBonus tbody tr").append("td")
-                      .attr("id", "tableChart")
-                      .attr("width", width + "px")
-                      .attr("rowspan", rows.length);
-
-                    const chart = d3.select("#tableChart").append("svg")
-                        .attr("class", "chart")
-                        .attr("width", width)
-                        .attr("height", height);
-
                     $("#chartBonus tbody tr td:nth-child(3)").each( function(){
                         const path = $(this).text();
                         const img = createImage(path);
