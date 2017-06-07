@@ -29,10 +29,10 @@ export const get2 = callback => {
 };
 
 export const get3 = callback => {
-    // return $.ajax({
-    //     method: "GET",
-    //     url: baseUrl+"average_note.php?user=22"
-    // }).done(data => {
-    //     callback($.parseJSON(data.trim()));
-    // }).fail(failed)
+    return $.ajax({
+        method: "GET",
+        url: baseUrl+"percentage_messages_friends.php?user=3"
+    }).done(data => {
+        callback($.parseJSON(data.trim()));
+    }).fail(failed)
 };
