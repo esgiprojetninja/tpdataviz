@@ -1,9 +1,9 @@
 pseudo,sexe,age,photo,popularite
-Aurélie Otta,0,18,29,13
-Sarah Goyave,0,22,27,11
-Lara Clayte,0,19,40,9
-Pauline Soubi,0,23,24,8
-Gilles Bachou,1,28,50,8
-Mina Uzumi,0,18,22,6
-Arthur Arhing,1,21,1,5
-Jean Aymar,1,20,36,3
+Aurélie Otta,0,18,img/avatar29.png,13
+Sarah Goyave,0,22,img/avatar27.jpg,11
+Lara Clayte,0,19,img/default-avatar.png,9
+Pauline Soubi,0,23,img/avatar24.png,8
+Gilles Bachou,1,28,img/default-avatar.png,8
+Mina Uzumi,0,18,img/avatar22.gif,6
+Arthur Arhing,1,21,img/avatar1.png,5
+Jean Aymar,1,20,img/avatar36.png,3

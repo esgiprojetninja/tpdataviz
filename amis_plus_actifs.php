@@ -21,6 +21,19 @@
 			return ( $row = mysqli_fetch_array($res) ) ? (int) $row["nb_status"] : 0;
 	}
 
+	function getPhotoPath($photo_id) {
+			$prefix = 'avatar';
+			if ( file_exists('img/'.$prefix.$photo_id.'.png') )
+					return 'img/'.$prefix.$photo_id.'.png';
+			if ( file_exists('img/'.$prefix.$photo_id.'.jpg') )
+					return 'img/'.$prefix.$photo_id.'.jpg';
+			if ( file_exists('img/'.$prefix.$photo_id.'.jpeg') )
+					return 'img/'.$prefix.$photo_id.'.jpeg';
+			if ( file_exists('img/'.$prefix.$photo_id.'.gif') )
+					return 'img/'.$prefix.$photo_id.'.gif';
+			return 'img/default-avatar.png';
+	}
+
 
 	if(isset($_GET['user'])) {
 		// Connexion à la BDD
@@ -61,7 +74,7 @@
 								"sexe" => $row["sexe"],
 								"age" => (int) $row["age"],
 							  // @TODO: find photo existence
-								"photo" => $row["photo"],
+								"photo" => getPhotoPath((int) $row["photo"]),
 								"popularite" => getNbMessages($conn, (int) $row["id"]) + getNbNotations($conn, (int) $row["id"]) + getNbStatus($conn, (int) $row["id"])
 						];
 				}

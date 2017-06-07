@@ -1,6 +1,7 @@
 import {getBonus, createDistantFile} from "../API/data";
 import converter from "json-2-csv";
 import * as d3 from "d3";
+import $ from "jquery";
 
 /***************************************
   QUESTION Bonus : Tableau
@@ -49,6 +50,14 @@ const questionBonus = () => {
                     thead.append("th").text("Photo");
                     thead.append("th").text("Popularité");
 
+                    function createImage(path){
+                        const img = document.createElement('img');
+                        img.src = path;
+                        img.style.height = "40px";
+                        img.style.width = "auto";
+                        return img;
+                    }
+
                     const tr = tbody.selectAll("tr")
                         .data(rows)
                         .enter().append("tr");
@@ -63,6 +72,9 @@ const questionBonus = () => {
                     const mx = 10;
                     const radius = 2;
 
+
+
+
                     // Now add the chart column
                     d3.select("#chartBonus tbody tr").append("td")
                       .attr("id", "tableChart")
@@ -74,7 +86,12 @@ const questionBonus = () => {
                         .attr("width", width)
                         .attr("height", height);
 
-
+                    $("#chartBonus tbody tr td:nth-child(3)").each( function(){
+                        const path = $(this).text();
+                        const img = createImage(path);
+                        $(this).empty();
+                        $(this)[0].appendChild(img);
+                    });
 
                 });
             })
